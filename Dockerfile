@@ -1,16 +1,13 @@
-FROM debian:bookworm
+FROM debian:trixie
 MAINTAINER Aaron Madlon-Kay <aaron@madlon-kay.com>
 
 # first create user and group for all the X Window stuff
 # required to do this first so we have consistent uid/gid between server and client container
-RUN addgroup --system xusers \
-  && adduser \
+RUN groupadd --system xusers \
+  && useradd \
 			--home /home/xclient \
-			--disabled-password \
 			--shell /bin/bash \
-			--gecos "user for running an xclient application" \
-			--ingroup xusers \
-			--quiet \
+			--groups xusers \
 			xclient
 
 # Install packages required for connecting against X Server
