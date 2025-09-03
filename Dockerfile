@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:bullseye
 MAINTAINER Aaron Madlon-Kay <aaron@madlon-kay.com>
 
 # first create user and group for all the X Window stuff
